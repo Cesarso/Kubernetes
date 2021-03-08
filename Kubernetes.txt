@@ -1,0 +1,61 @@
+Kubernetes é um orquestrador de container.
+
+Pod é um encapsulamento de um container
+
+cluster Master: Gerenciar o cluster, Manter e atualizar o estado desejado, receber e executar novos comandos (API Rest)
+
+nodes: encapsula os containers, execultar as aplicações 
+
+No powershell:
+
+verificando os node:
+kubectl get nodes
+
+No linux:
+
+Primeiro para o kubectl:
+
+sudo apt-get install curl -y
+curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+Agora para o minikube:
+
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.12.1/minikube-linux-amd64 \ && chmod +x minikube
+sudo install minikube /usr/local/bin/
+
+
+
+Criando um pods:
+kubectl run
+nginx-pod --image=ngin:latest
+
+Verificando pods:
+kubectl get
+pods
+
+Editando pods:
+kubectl edit pod nginx-pod
+Podendo alterar a imagem do containers
+
+
+Criado de forma declarativa:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: primeiro-pod-declarativo
+spec:
+  containers:
+    - name: nginx-conatiner
+      image: nginx:latest
+
+
+Criando o cluster:
+Deve criar o arquivo pod.
+
+
+Teste de comunicação:
+curl 10.96.0.1:80
+
+
+
