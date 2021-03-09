@@ -1,10 +1,10 @@
-Kubernetes � um orquestrador de container.
+Kubernetes é um orquestrador de container.
 
-Pod � um encapsulamento de um container
+Pod é um encapsulamento de um container
 
 cluster Master: Gerenciar o cluster, Manter e atualizar o estado desejado, receber e executar novos comandos (API Rest)
 
-nodes: encapsula os containers, execultar as aplica��es 
+nodes: encapsula os containers, execultar as aplicações 
 
 No powershell:
 
@@ -54,8 +54,47 @@ Criando o cluster:
 Deve criar o arquivo pod.
 
 
-Teste de comunica��o:
+Teste de comunicação:
 curl 10.96.0.1:80
+
+
+O que são e para que servem os Services
+Como garantir estabilidade de IP e DNS
+Como criar um Service
+Labels são responsáveis por definir a relação Service x Pod
+Um ClusterIP funciona apenas dentro do cluster
+Um NodePort expõe Pods para dentro e fora do cluster
+Um LoadBalancer também é um NodePort e ClusterIP
+Um LoadBalancer é capaz de automaticamente utilizar um balanceador de carga de um cloud provider
+
+CRIANDO UM PODS:
+kubectl apply -f .\db-noticias.yaml
+
+Verificando pods: 
+kubectl get pods
+
+Crinado service;
+kubectl apply -f .\svc-db-noticias.yaml
+
+Verificando service:
+kubectl get svc
+
+Deletando pods:
+kubectl delete pods --all
+
+deletando um pods:
+kubectl delete pod db-noticias
+
+Acessando as config do pods:
+kubectl describe pods db-noticias
+
+criando um configmap:
+kubectl apply -f .\db-configmap.yaml
+
+ACESSANDO O BANCO DO CONTAINER:
+kubectl exec -it db-noticias -- bash
+
+
 
 
 
